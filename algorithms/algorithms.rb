@@ -37,28 +37,25 @@ def  largest_contiguous_subsum(list) #O(n^3)
 end 
 
 def  largest_contiguous_subsum_2(list) #O(n)
-    max = list.first
-    super_max = max
+    current_sum = list.first
+    super_sum = current_sum
 
     list.each_with_index do |ele, i|
         if i != 0
-            sum = max + list[i]
-            if sum > max
-                max = sum
-            else
-                # max = list[i]
+            current_sum += list[i]
+            if current_sum < list[i]
+                current_sum = list[i]
             end
-            if max > super_max
-                super_max += max
-                max = 0
+            if super_sum < current_sum
+                super_sum = current_sum
             end
         end
     end
-    super_max
+    super_sum
 end 
  list = [-1, -2, -7]
  list_2 = [4,2,5,6, -1, 1,2,3]
- list_3 = [1,2,3,4,5,-100, 1, 17, -50, 100]
+ list_3 = [1,2,3,4,5,-100   , 1, 17, -50, 100]
 #  -5
 #  -1
 
